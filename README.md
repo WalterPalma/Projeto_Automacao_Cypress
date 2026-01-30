@@ -83,9 +83,9 @@ module.exports = defineConfig({
 🛠️ Comandos customizados
 
 fillForm
+Preenche o formulário com dados vindos do formData.json.
 
 ```js
-Preenche o formulário com dados vindos do formData.json.
 Cypress.Commands.add("fillForm", (data) => {
   cy.get("#firstName").type(data.firstName);
   cy.get("#lastName").type(data.lastName);
@@ -121,8 +121,9 @@ Cypress.Commands.add("fillForm", (data) => {
 ```
 
 - validateModal
-```js
 Valida os dados exibidos no modal de confirmação após submissão.
+
+```js
 Cypress.Commands.add("validateModal", (data) => {
   cy.get(".modal-content").should("be.visible");
   cy.get("td").contains("Student Name").next().should("contain", `${data.firstName} ${data.lastName}`);
