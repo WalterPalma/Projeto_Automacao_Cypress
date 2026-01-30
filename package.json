@@ -1,0 +1,18 @@
+{
+  "name": "cypress-cucumber-form",
+  "version": "1.0.0",
+  "devDependencies": {
+    "cypress": "^13.15.0",
+    "@badeball/cypress-cucumber-preprocessor": "^24.0.0",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.1.5"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "cypress:open": "cypress open"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/step_definitions/**/*.{js,ts}"
+    ]
+  }
+}

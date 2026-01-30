@@ -1,0 +1,13 @@
+{
+  "firstName": "Walter",
+  "lastName": "Palma",
+  "email": "walter.palma@teste.com",
+  "gender": "Male",
+  "mobile": "1199999999",
+  "dateOfBirth": "13 Dec 1996",
+  "subjects": ["Maths", "English"],
+  "hobbies": ["Sports", "Reading"],
+  "address": "Rua Exemplo, 123 - São Paulo",
+  "state": "NCR",
+  "city": "Delhi"
+}
