@@ -2,6 +2,7 @@
 
 Projeto de testes automatizados usando **Cypress** com **Cucumber (BDD)** para validar o formulário de prática
 disponível em [DemoQA](https://demoqa.com/automation-practice-form).
+Autor: Walter Palma
 
 ---
 
@@ -52,8 +53,9 @@ package.json # Dependências e scripts
     ]
   }
 }
-
-- cypress.config.js
+```
+cypress.config.js
+```js
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
@@ -76,12 +78,13 @@ module.exports = defineConfig({
   },
 });
 
-
----
+```
 
 🛠️ Comandos customizados
 
-- fillForm
+fillForm
+
+```js
 Preenche o formulário com dados vindos do formData.json.
 Cypress.Commands.add("fillForm", (data) => {
   cy.get("#firstName").type(data.firstName);
@@ -115,8 +118,10 @@ Cypress.Commands.add("fillForm", (data) => {
   cy.get("#city").click();
   cy.get(".css-26l3qy-menu").contains(data.city).click();
 });
+```
 
 - validateModal
+```js
 Valida os dados exibidos no modal de confirmação após submissão.
 Cypress.Commands.add("validateModal", (data) => {
   cy.get(".modal-content").should("be.visible");
@@ -130,9 +135,10 @@ Cypress.Commands.add("validateModal", (data) => {
   cy.get("td").contains("Address").next().should("contain", data.address);
   cy.get("td").contains("State and City").next().should("contain", `${data.state} ${data.city}`);
 });
-
+```
 
 📑 Massa de dados (formData.json)
+```json
 {
   "firstName": "Walter",
   "lastName": "Palma",
@@ -146,9 +152,10 @@ Cypress.Commands.add("validateModal", (data) => {
   "state": "NCR",
   "city": "Delhi"
 }
+```
 
 🧪 Cenários BDD
-1. Validar obrigatoriedade dos campos
+```gherkin
 Feature: Validar obrigatoriedade dos campos
   Scenario: Verificar obrigatoriedade dos campos
     Given que estou na página do formulário
@@ -157,8 +164,7 @@ Feature: Validar obrigatoriedade dos campos
     And devo visualizar uma mensagem de erro para "Last Name"
     And devo visualizar uma mensagem de erro para "Gender"
     And devo visualizar uma mensagem de erro para "Mobile"
-
-2. Validar presença dos campos
+  
 Feature: Validar presença dos campos no formulário
   Scenario: Verificar se todos os campos estão presentes
     Given que estou na página do formulário
@@ -174,8 +180,7 @@ Feature: Validar presença dos campos no formulário
     And devo visualizar o campo "State"
     And devo visualizar o campo "City"
     And devo visualizar o campo "Submit"
-
-3. Validar dados exibidos no modal
+  
 Feature: Validar dados exibidos no modal
   Scenario: Verificar dados no modal de confirmação
     Given que estou na página do formulário
@@ -183,8 +188,7 @@ Feature: Validar dados exibidos no modal
     When submeto o formulário
     Then devo visualizar o modal de confirmação
     And os dados exibidos devem corresponder aos dados informados
-
-4. Validar mensagem de confirmação
+  
 Feature: Validar mensagem de confirmação
   Scenario: Verificar mensagem após submissão
     Given que estou na página do formulário
@@ -192,19 +196,26 @@ Feature: Validar mensagem de confirmação
     When submeto o formulário
     Then devo visualizar a mensagem "Thanks for submitting the form"
 
----
+```
 
 ▶️ Como executar
+
 - Instalar dependências:
--- npm install
+```bash
+npm install
+```
 
 - Abrir o Cypress em modo interativo:
--- npm run cypress:open
+```bash
+npm run cypress:open
+```
 
 - Rodar os testes em modo headless:
--- npm test
+```bash
+npm test
+```
 
----
+
 ✅ Resultado esperado :
 - Validação de obrigatoriedade dos campos.
 - Presença e visibilidade de todos os campos do formulário.
