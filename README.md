@@ -53,7 +53,7 @@ package.json # Dependências e scripts
   }
 }
 
-## cypress.config.js
+- cypress.config.js
 const { defineConfig } = require("cypress");
 const createBundler = require("@bahmutov/cypress-esbuild-preprocessor");
 const addCucumberPreprocessorPlugin = require("@badeball/cypress-cucumber-preprocessor").addCucumberPreprocessorPlugin;
@@ -81,7 +81,7 @@ module.exports = defineConfig({
 
 🛠️ Comandos customizados
 
-## fillForm
+- fillForm
 Preenche o formulário com dados vindos do formData.json.
 Cypress.Commands.add("fillForm", (data) => {
   cy.get("#firstName").type(data.firstName);
@@ -116,7 +116,7 @@ Cypress.Commands.add("fillForm", (data) => {
   cy.get(".css-26l3qy-menu").contains(data.city).click();
 });
 
-## validateModal
+- validateModal
 Valida os dados exibidos no modal de confirmação após submissão.
 Cypress.Commands.add("validateModal", (data) => {
   cy.get(".modal-content").should("be.visible");
@@ -195,13 +195,13 @@ Feature: Validar mensagem de confirmação
 ---
 
 ▶️ Como executar
-## Instalar dependências:
-- npm install
+- Instalar dependências:
+-- npm install
 
-## Abrir o Cypress em modo interativo:
+- Abrir o Cypress em modo interativo:
 -- npm run cypress:open
 
-## Rodar os testes em modo headless:
+- Rodar os testes em modo headless:
 -- npm test
 
 ---
